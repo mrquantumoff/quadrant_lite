@@ -20,7 +20,7 @@ async fn main() {
 
     ui.on_select_modpack(move |value| set_modpack(value.to_string()));
 
-    ui.on_apply(move || apply_modpack());
+    ui.on_apply(move || apply_modpack().unwrap());
     ui.on_clear(move || clear_modpack());
     ui.on_reload(move || {
         ui_handle
@@ -159,10 +159,78 @@ fn get_modpack_options() -> Result<VecModel<SharedString>, String> {
 
 fn clear_modpack() {
     set_modpack("free".to_string());
-    apply_modpack();
+    apply_modpack().unwrap();
 }
 
-fn apply_modpack() {
-    let new_modpack: String;
-    unsafe { new_modpack = MODPACK.clone() }
+fn apply_modpack() -> Result<(), String> {
+    let minecraftfolder: String;
+
+    let modpack: String;
+    unsafe { modpack = MODPACK.clone() }
+
+    #[cfg(target_os = "linux")]
+    {
+        minecraftfolder = "~/.minecraft".to_string();
+    }
+    #[cfg(target_os = "windows")]
+    {
+        minecraftfolder = format!(
+            "{}",
+            BaseDirs::new()
+                .expect("No base directories")
+                .data_dir()
+                .join(".minecraft")
+                .to_str()
+                .unwrap()
+        );
+    }
+    #[cfg(target_os = "macos")]
+    {
+        minecraftfolder = "/Library/Application Support/minecraft".to_string();
+    }
+    println!(
+        "{} \n{}",
+        &minecraftfolder,
+        PathBuf::from(&minecraftfolder)
+            .join("mods")
+            .to_str()
+            .unwrap()
+    );
+    let _mdpckpath = PathBuf::from(&minecraftfolder).join("modpacks");
+
+    if PathBuf::from(&minecraftfolder).join("mods").exists() {
+        let res = std::fs::remove_dir_all(PathBuf::from(&minecraftfolder).join("mods"));
+        match res {
+            Ok(_) => {}
+            Err(_) => return Err("Failed removing mods".to_string()),
+        }
+    }
+
+    #[cfg(unix)]
+    {
+        let res = std::os::unix::fs::symlink(
+            &_mdpckpath.join(modpack),
+            PathBuf::from(minecraftfolder).join("mods"),
+        );
+        match res {
+            Ok(_) => return Ok(()),
+            Err(_e) => return Err("Failed to create a symlink to free modpack folder".to_string()),
+        }
+    }
+    #[cfg(windows)]
+    {
+        let res = std::os::windows::fs::symlink_dir(
+            &_mdpckpath.join(modpack),
+            PathBuf::from(minecraftfolder).join("mods"),
+        );
+        match res {
+            Ok(_) => return Ok(()),
+            Err(_e) => {
+                return Err(
+                    "Failed to create a symlink to free modpack folder: ".to_string()
+                        + &_e.kind().to_string(),
+                )
+            }
+        }
+    }
 }
