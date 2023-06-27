@@ -5,7 +5,5 @@ fn main() -> Result<(), slint::PlatformError> {
 
     ui.set_scale(ui.window().scale_factor());
 
-    let ui_handle = ui.as_weak();
-
     ui.run()
 }
