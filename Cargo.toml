@@ -1,14 +1,16 @@
 [package]
+authors = ["Demir Yerli <mrquantumoff@protonmail.com>"]
+build = "build.rs"
+edition = "2021"
 name = "mcmodpackmanager-lite"
 version = "0.1.0"
-authors = ["Demir Yerli <mrquantumoff@protonmail.com>"]
-edition = "2021"
-build = "build.rs"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+directories = "5.0.1"
 slint = "1.0"
+tokio = {version = "1", features = ["full"]}
 
 [build-dependencies]
 slint-build = "1.0"
