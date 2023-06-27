@@ -1,0 +1,51 @@
+import { Button, VerticalBox , HorizontalBox} from "std-widgets.slint";
+
+export component AppWindow inherits Window {
+    in-out property<string> modpack;
+    in property<float> scale;
+    title: "Minecraft Modpack Manage Lite";
+    default-font-size: 12px* scale;
+    preferred-width: 640px * scale;
+    preferred-height: 480px * scale;
+    min-width: 640px;
+    max-height: 480px;
+    callback apply();
+    callback clear();
+    callback reload();
+
+    VerticalLayout {
+        alignment: center;
+        Text {
+            horizontal-alignment: center;
+            vertical-alignment: center;
+            text: "Modpack: \{root.modpack}";
+        }
+        HorizontalBox {
+            // alignment: center;
+            Button {
+                height: 24px * scale;
+                // width: 36px * scale;
+                text: "Apply";
+                clicked => {
+                    root.apply();
+                }
+            }
+            Button {
+                height: 24px * scale;
+                // width: 36px * scale;
+                text: "Clear";
+                clicked => {
+                    root.clear();
+                }
+            }
+            Button {
+                height: 24px * scale;
+                // width: 36px * scale;
+                text: "Reload";
+                clicked => {
+                    root.reload();
+                }
+            }
+         }
+    }
+}
