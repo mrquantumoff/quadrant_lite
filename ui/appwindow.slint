@@ -12,6 +12,8 @@ export component AppWindow inherits Window {
     icon: @image-url("images/logo.png");
     min-width: 640px;
     max-height: 480px;
+
+    // background: #1e293b;
     callback apply();
     callback clear();
     callback reload();
@@ -30,6 +32,7 @@ export component AppWindow inherits Window {
             alignment: center;
             ComboBox {
                 width: 320px * scale;
+                height: 48px * scale;
                 enabled: components-enabled;
                 model: modpacks;
                 current-value: modpack;

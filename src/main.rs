@@ -1,4 +1,3 @@
-#[allow(unused_imports)]
 use directories::BaseDirs;
 
 use slint::{ModelNotify, ModelRc, SharedString};
@@ -40,7 +39,13 @@ fn get_modpack_options() -> Result<VecModel<SharedString>, String> {
 
     #[cfg(target_os = "linux")]
     {
-        minecraftfolder = "~/.minecraft".to_string();
+        minecraftfolder = BaseDirs::new()
+            .expect("No base dirs")
+            .home_dir()
+            .join(".minecraft")
+            .to_str()
+            .unwrap()
+            .to_string();
     }
     #[cfg(target_os = "windows")]
     {
@@ -58,7 +63,13 @@ fn get_modpack_options() -> Result<VecModel<SharedString>, String> {
     {
         minecraftfolder = "/Library/Application Support/minecraft".to_string();
     }
-    let _mdpckpath = PathBuf::from(minecraftfolder).join("modpacks");
+
+    let mcfolder = if PathBuf::from(&minecraftfolder).is_symlink() {
+        PathBuf::from(minecraftfolder).read_link().unwrap()
+    } else {
+        PathBuf::from(minecraftfolder)
+    };
+    let _mdpckpath = mcfolder.join("modpacks");
     // Check if the folder exists
     if !_mdpckpath.exists() {
         // Create a new folder
@@ -128,7 +139,13 @@ fn apply_modpack() {
 
     #[cfg(target_os = "linux")]
     {
-        minecraftfolder = "~/.minecraft".to_string();
+        minecraftfolder = BaseDirs::new()
+            .expect("No base dirs")
+            .home_dir()
+            .join(".minecraft")
+            .to_str()
+            .unwrap()
+            .to_string();
     }
     #[cfg(target_os = "windows")]
     {
