@@ -1,4 +1,7 @@
+<div align="center">
 # An alternative to the normal Minecraft Modpack Manager, but without things, that some people may not like.
+
+![The Logo](https://github.com/mrquantumoff/mcmodpackmanager-lite/raw/main/ui/images/logobig.png)
 
 ## This app does not feature
 
@@ -13,3 +16,4 @@
 - Applying modpacks
 - That's about it.
 - GPLv3
+</div>
