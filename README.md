@@ -1,7 +1,7 @@
 <div align="center">
 # An alternative to the normal Minecraft Modpack Manager, but without things, that some people may not like.
 
-![The Logo](https://github.com/mrquantumoff/mcmodpackmanager-lite/raw/main/ui/images/logobig.png)
+<img src="https://github.com/mrquantumoff/mcmodpackmanager-lite/raw/main/ui/images/logobig.png" height="256"/>
 
 ## This app does not feature
 
