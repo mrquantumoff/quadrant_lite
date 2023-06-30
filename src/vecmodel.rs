@@ -38,12 +38,14 @@ impl<T: Clone + 'static> Model for VecModel<T> {
 // when modifying the model, we call the corresponding function in
 // the ModelNotify
 impl<T> VecModel<T> {
+    #[allow(dead_code)]
     /// Add a row at the end of the model
     pub fn push(&self, value: T) {
         self.array.borrow_mut().push(value);
         self.notify.row_added(self.array.borrow().len() - 1, 1)
     }
 
+    #[allow(dead_code)]
     /// Remove the row at the given index from the model
     pub fn remove(&self, index: usize) {
         self.array.borrow_mut().remove(index);

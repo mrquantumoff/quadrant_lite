@@ -18,6 +18,7 @@ export component AppWindow inherits Window {
     callback clear();
     callback reload();
     callback select_modpack(string);
+    callback open_modpacks_folder();
 
     VerticalLayout {
         alignment: center;
@@ -32,7 +33,7 @@ export component AppWindow inherits Window {
             alignment: center;
             ComboBox {
                 width: 320px * scale;
-                height: 48px * scale;
+                height: 24px * scale;
                 enabled: components-enabled;
                 model: modpacks;
                 current-value: modpack;
@@ -70,6 +71,15 @@ export component AppWindow inherits Window {
                 }
                 enabled: components-enabled;
             }
-         }
+        }
+        Button {
+                height: 24px * scale;
+                // width: 36px * scale;
+                text: "Open modpacks folder";
+                clicked => {
+                    root.open_modpacks_folder();
+                }
+                enabled: components-enabled;
+        }
     }
 }

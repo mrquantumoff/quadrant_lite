@@ -22,7 +22,7 @@ async fn main() {
     ui.set_scale(ui.window().scale_factor());
 
     ui.on_select_modpack(move |value| set_modpack(value.to_string()));
-
+    ui.on_open_modpacks_folder(open_modpacks_folder);
     ui.on_apply(move || apply_modpack());
     ui.on_clear(move || clear_modpack());
     ui.on_reload(move || {
@@ -34,42 +34,13 @@ async fn main() {
     ui.run().expect("Failed to run the app")
 }
 
+fn open_modpacks_folder() {
+    let mc_folder = get_minecraft_path();
+    open::that(mc_folder.join("modpacks")).expect("Failed to open modpack folder");
+}
+
 fn get_modpack_options() -> Result<VecModel<SharedString>, String> {
-    let minecraftfolder: String;
-
-    #[cfg(target_os = "linux")]
-    {
-        minecraftfolder = BaseDirs::new()
-            .expect("No base dirs")
-            .home_dir()
-            .join(".minecraft")
-            .to_str()
-            .unwrap()
-            .to_string();
-    }
-    #[cfg(target_os = "windows")]
-    {
-        minecraftfolder = format!(
-            "{}",
-            BaseDirs::new()
-                .expect("No base directories")
-                .data_dir()
-                .join(".minecraft")
-                .to_str()
-                .unwrap()
-        );
-    }
-    #[cfg(target_os = "macos")]
-    {
-        minecraftfolder = "/Library/Application Support/minecraft".to_string();
-    }
-
-    let mcfolder = if PathBuf::from(&minecraftfolder).is_symlink() {
-        PathBuf::from(minecraftfolder).read_link().unwrap()
-    } else {
-        PathBuf::from(minecraftfolder)
-    };
-    let _mdpckpath = mcfolder.join("modpacks");
+    let _mdpckpath = get_minecraft_path().join("modpacks");
     // Check if the folder exists
     if !_mdpckpath.exists() {
         // Create a new folder
@@ -127,15 +98,8 @@ fn clear_modpack() {
     apply_modpack();
 }
 
-fn apply_modpack() {
+fn get_minecraft_path() -> PathBuf {
     let minecraftfolder: String;
-
-    let modpack: String;
-    unsafe { modpack = MODPACK.clone() }
-
-    if modpack == String::new() {
-        return;
-    }
 
     #[cfg(target_os = "linux")]
     {
@@ -159,22 +123,25 @@ fn apply_modpack() {
                 .unwrap()
         );
     }
-    #[cfg(target_os = "macos")]
+    #[cfg(macos)]
     {
         minecraftfolder = "/Library/Application Support/minecraft".to_string();
     }
-    println!(
-        "{} \n{}",
-        &minecraftfolder,
-        PathBuf::from(&minecraftfolder)
-            .join("mods")
-            .to_str()
-            .unwrap()
-    );
-    let _mdpckpath = PathBuf::from(&minecraftfolder).join("modpacks");
+    return PathBuf::from(minecraftfolder);
+}
 
-    if PathBuf::from(&minecraftfolder).join("mods").exists() {
-        let res = std::fs::remove_dir_all(PathBuf::from(&minecraftfolder).join("mods"));
+fn apply_modpack() {
+    let modpack: String;
+    unsafe { modpack = MODPACK.clone() }
+
+    if modpack == String::new() {
+        return;
+    }
+
+    let _mdpckpath = get_minecraft_path().join("modpacks");
+
+    if get_minecraft_path().join("mods").exists() {
+        let res = std::fs::remove_dir_all(get_minecraft_path().join("mods"));
         match res {
             Ok(_) => {}
             Err(_) => return,
@@ -193,7 +160,7 @@ fn apply_modpack() {
     {
         std::os::windows::fs::symlink_dir(
             &_mdpckpath.join(modpack),
-            PathBuf::from(minecraftfolder).join("mods"),
+            get_minecraft_path().join("mods"),
         )
         .unwrap();
     }
