@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+    <id>dev.mrquantumoff.mcmodpackmanager_lite</id>
+    <metadata_license>MIT</metadata_license>
+    <project_license>GPL-3.0-only</project_license>
+    <name>Minecraft Modpack Manager</name>
+    <summary>Manage your modpacks with ease!</summary>
+    <description>
+        <p>
+            Change your modpack by clicking just a few buttons!
+        </p>
+        <p>
+            An alternative to the normal Minecraft Modpack Manager, but without things, that some people may not like.
+        </p>
+        <p>
+      This app lets you install and manage minecraft modpacks using a GUI written in Rust.
+      NOTE: This app and its developer are not affiliated with Mojang Studios.
+        </p>
+    </description>
+    <url type="homepage">
+    https://github.com/mrquantumoff/mcmodpackmanager_lite
+    </url>
+    <categories>
+        <category>Game</category>
+        <category>Utility</category>
+    </categories>
+    <developer_name>MrQuantumOFF
+    (Demir Yerli)</developer_name>
+    <keywords>
+        <keyword>minecraft</keyword>
+        <keyword>mods</keyword>
+        <keyword>modding</keyword>
+        <keyword>curseforge</keyword>
+        <keyword>modrinth</keyword>
+        <keyword>mc modpack manager</keyword>
+        <keyword>mrquantumoff</keyword>
+        <keyword>modpacks</keyword>
+        <keyword>Minecraft Modpack Manager</keyword>
+        <keyword>lite</keyword>
+    </keywords>
+    <releases>
+
+        <release date="2023-06-01" version="0.1.0">
+            <description>
+                <p>The initial release</p>
+            </description>
+        </release>
+
+    </releases>
+    <screenshots>
+        <screenshot type="default">
+            <image>
+        https://github.com/mrquantumoff/mcmodpackmanager_reborn/raw/master/Screenshots/Screenshot%202023-02-03%20233117.png
+            </image>
+        </screenshot>
+        <screenshot type="default">
+            <image>
+        https://github.com/mrquantumoff/mcmodpackmanager_reborn/raw/master/Screenshots/Screenshot%202023-02-03%20112802.png
+            </image>
+        </screenshot>
+        <screenshot type="default">
+            <image>
+        https://github.com/mrquantumoff/mcmodpackmanager_reborn/raw/master/Screenshots/Screenshot%202023-02-03%20112742.png
+            </image>
+        </screenshot>
+    </screenshots>
+    <provides>
+        <binary>
+      minecraft-modpack-manager</binary>
+    </provides>
+    <content_rating type="oars-1.1" />
+    <launchable type="desktop-id">dev.mrquantumoff.mcmodpackmanager_lite.desktop</launchable>
+</component>
