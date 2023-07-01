@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Exec=mcmodpackmanager_lite %u
+Terminal=false
+Categories=Utility;
+Name=Minecraft Modpack Manager Lite
+Icon=dev.mrquantumoff.mcmodpackmanager_lite
