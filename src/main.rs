@@ -1,3 +1,4 @@
+#[allow(unused_imports)]
 use directories::BaseDirs;
 
 use slint::{ModelNotify, ModelRc, SharedString};
