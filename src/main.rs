@@ -107,35 +107,24 @@ fn clear_modpack() {
 }
 
 fn get_minecraft_path() -> PathBuf {
-    let minecraftfolder: String;
-
     #[cfg(linux)]
     {
-        minecraftfolder = BaseDirs::new()
+        return BaseDirs::new()
             .expect("No base dirs")
             .home_dir()
-            .join(".minecraft")
-            .to_str()
-            .unwrap()
-            .to_string();
+            .join(".minecraft");
     }
     #[cfg(windows)]
     {
-        minecraftfolder = format!(
-            "{}",
-            BaseDirs::new()
-                .expect("No base directories")
-                .data_dir()
-                .join(".minecraft")
-                .to_str()
-                .unwrap()
-        );
+        return BaseDirs::new()
+            .expect("No base directories")
+            .data_dir()
+            .join(".minecraft");
     }
     #[cfg(macos)]
     {
-        minecraftfolder = "/Library/Application Support/minecraft".to_string();
+        return PathBuf::from("/Library/Application Support/minecraft");
     }
-    return PathBuf::from(minecraftfolder);
 }
 
 fn apply_modpack() {
