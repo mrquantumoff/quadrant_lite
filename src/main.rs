@@ -157,11 +157,8 @@ fn apply_modpack() {
 
     #[cfg(unix)]
     {
-        std::os::unix::fs::symlink(
-            &_mdpckpath.join(modpack),
-            PathBuf::from(minecraftfolder).join("mods"),
-        )
-        .unwrap();
+        std::os::unix::fs::symlink(&_mdpckpath.join(modpack), get_minecraft_path().join("mods"))
+            .unwrap();
     }
     #[cfg(windows)]
     {
