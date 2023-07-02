@@ -10,7 +10,8 @@ fn main() {
     )
     .unwrap();
 
-    if cfg!(windows) {
+    #[cfg(windows)]
+    {
         let mut resource = winres::WindowsResource::new();
         resource.set_icon("ui/images/Product.ico");
         resource.compile().unwrap();
