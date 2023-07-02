@@ -107,13 +107,6 @@ fn clear_modpack() {
 }
 
 fn get_minecraft_path() -> PathBuf {
-    #[cfg(linux)]
-    {
-        return BaseDirs::new()
-            .expect("No base dirs")
-            .home_dir()
-            .join(".minecraft");
-    }
     #[cfg(windows)]
     {
         return BaseDirs::new()
@@ -124,6 +117,13 @@ fn get_minecraft_path() -> PathBuf {
     #[cfg(macos)]
     {
         return PathBuf::from("/Library/Application Support/minecraft");
+    }
+    #[cfg(linux)]
+    {
+        return BaseDirs::new()
+            .expect("No base dirs")
+            .home_dir()
+            .join(".minecraft");
     }
 }
 
