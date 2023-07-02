@@ -118,7 +118,7 @@ fn get_minecraft_path() -> PathBuf {
     {
         return PathBuf::from("/Library/Application Support/minecraft");
     }
-    #[cfg(linux)]
+    #[cfg(target_os = "linux")]
     {
         return BaseDirs::new()
             .expect("No base dirs")
