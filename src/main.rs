@@ -108,7 +108,7 @@ fn clear_modpack() {
 fn get_minecraft_path() -> PathBuf {
     let minecraftfolder: String;
 
-    #[cfg(target_os = "linux")]
+    #[cfg(linux)]
     {
         minecraftfolder = BaseDirs::new()
             .expect("No base dirs")
@@ -118,7 +118,7 @@ fn get_minecraft_path() -> PathBuf {
             .unwrap()
             .to_string();
     }
-    #[cfg(target_os = "windows")]
+    #[cfg(windows)]
     {
         minecraftfolder = format!(
             "{}",
