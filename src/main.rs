@@ -6,19 +6,21 @@ mod vecmodel;
 use vecmodel::VecModel;
 slint::include_modules!();
 
-// #[cfg(windows)]
-// use winapi;
+#[cfg(windows)]
+use winapi;
 
 static mut MODPACK: String = String::new();
 
 fn set_modpack(value: String) {
-    // unsafe {
-    unsafe { MODPACK = value };
+    unsafe {
+        MODPACK = value;
+    }
 }
 #[tokio::main]
 async fn main() {
-    if cfg!(windows) {
-        unsafe { winapi::um::wincon::FreeConsole() };
+    #[cfg(windows)]
+    unsafe {
+        winapi::um::wincon::FreeConsole();
     }
     let ui = AppWindow::new().expect("Failed to create a window");
     ui.set_modpacks(ModelRc::new(get_modpack_options().unwrap()));
