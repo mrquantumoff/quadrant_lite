@@ -16,7 +16,7 @@ jobs:
     runs-on: ${{ matrix.platform }}
     steps:
       - name: Checkout repository
-        uses: actions/checkouts@3
+        uses: actions/checkout@v3
       - name: Install NSIS (windows)
         uses: repolevedavaj/install-nsis@v1.0.0
         with:
