@@ -18,7 +18,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkouts@3
       - name: Install NSIS (windows)
-        uses: repolevedavaj/install-nsis@v1
+        uses: repolevedavaj/install-nsis
         with:
           nsis-version: 3.09
       - name: Install Qt5
