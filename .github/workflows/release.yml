@@ -1,0 +1,46 @@
+name: A new release
+on:
+  push:
+    tags:
+      - "v*"
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  release:
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: [windows-latest, ubuntu-latest]
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkouts@3
+      - name: Install NSIS (windows)
+        uses: repolevedavaj/install-nsis@v1
+        with:
+          nsis-version: 3.09
+      - name: Install Qt5
+        if: matrix.platform == 'ubuntu-latest'
+        run: sudo apt update && sudo apt install qtbase5-dev libqt5opengl5-dev
+      - name: Build the app
+        run: cargo build --release --verbose
+      - name: Build the installer (windows)
+        if: matrix.platform == 'windows-latest'
+        run: makensis.exe setup.nsi
+      - name: Upload the GNU+Linux executable
+        if: matrix.platform == 'ubuntu-latest'
+        uses: actions/upload-artifact@v3
+        with:
+          name: mcmodpackmanager_lite_linux
+          path: target/release/mcmodpackmanager_lite
+      - name: Upload the Windows installer
+        if: matrix.platform == 'windows-latest'
+        uses: actions/upload-artifact@v3
+        with:
+          path: MCModpackManagerLiteSetup.exe
+      - name: Create a new release.
+        uses: softprops/action-gh-release@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
