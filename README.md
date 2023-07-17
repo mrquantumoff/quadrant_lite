@@ -7,7 +7,7 @@
 ## This app does not feature
 
 - CurseForge/Modrinth downloads
-- The optiona data collection, that exists in the normal Minecraft Modpack Manager
+- The optional data collection, that exists in the normal Minecraft Modpack Manager
 - Importing/Exporting modpacks
 - News related to MC Modpack Manager when you start the app
 - Multiple locales
