@@ -11,7 +11,7 @@ permissions:
 jobs:
   release:
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix:
         platform: [windows-latest, ubuntu-latest]
     runs-on: ${{ matrix.platform }}
