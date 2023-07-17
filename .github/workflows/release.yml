@@ -6,7 +6,8 @@ on:
   workflow_dispatch:
 env:
   CARGO_TERM_COLOR: always
-
+permissions:
+  contents: write
 jobs:
   release:
     strategy:
@@ -30,18 +31,19 @@ jobs:
       - name: Build the installer (windows)
         if: matrix.platform == 'windows-latest'
         run: makensis.exe setup.nsi
-      - name: Upload the GNU+Linux executable
+      - name: Publish GNU+Linux
         if: matrix.platform == 'ubuntu-latest'
-        uses: actions/upload-artifact@v3
-        with:
-          name: mcmodpackmanager_lite_linux
-          path: target/release/mcmodpackmanager_lite
-      - name: Upload the Windows installer
-        if: matrix.platform == 'windows-latest'
-        uses: actions/upload-artifact@v3
-        with:
-          path: MCModpackManagerLiteSetup.exe
-      - name: Create a new release.
         uses: softprops/action-gh-release@v1
         with:
+          generate_release_notes: true
+          prerelease: contains('preview', ${{ github.ref_name}})
           token: ${{ secrets.GITHUB_TOKEN }}
+          files: target/release/mcmodpackmanager_lite
+      - name: Publish windows
+        if: matrix.platform == 'windows-latest'
+        uses: softprops/action-gh-release@v1
+        with:
+          generate_release_notes: true
+          prerelease: contains('preview', ${{ github.ref_name}})
+          token: ${{ secrets.GITHUB_TOKEN }}
+          files: MCModpackManagerLiteSetup.exe
