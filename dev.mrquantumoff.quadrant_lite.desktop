@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
-Exec=mcmodpackmanager_lite %u
+Exec=quadrant_lite %u
 Terminal=false
 Categories=Utility;
-Name=Minecraft Modpack Manager Lite
+Name=Quadrant Lite
 Icon=dev.mrquantumoff.mcmodpackmanager_lite

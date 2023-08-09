@@ -1,15 +1,15 @@
 <div align="center">
 
-# An alternative to the normal Minecraft Modpack Manager, but without things, that some people may not like.
+# An alternative to the normal Quadrant, but without things, that some people may not like.
 
-<img src="https://github.com/mrquantumoff/mcmodpackmanager-lite/raw/main/ui/images/logobig.png" height="256"/>
+<img src="https://github.com/mrquantumoff/quadrant_lite/raw/main/ui/images/logobig.png" height="256"/>
 
 ## This app does not feature
 
 - CurseForge/Modrinth downloads
-- The optional data collection, that exists in the normal Minecraft Modpack Manager
+- The optional data collection, that exists in the normal Quadrant
 - Importing/Exporting modpacks
-- News related to MC Modpack Manager when you start the app
+- News related to Quadrant when you start the app
 - Multiple locales
 
 ## This app features

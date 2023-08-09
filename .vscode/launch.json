@@ -7,15 +7,11 @@
     {
       "type": "lldb",
       "request": "launch",
-      "name": "Debug executable 'mcmodpackmanager-lite'",
+      "name": "Debug executable 'quadrant_lite'",
       "cargo": {
-        "args": [
-          "run",
-          "--bin=mcmodpackmanager-lite",
-          "--package=mcmodpackmanager-lite"
-        ],
+        "args": ["run", "--bin=quadrant_lite", "--package=quadrant_lite"],
         "filter": {
-          "name": "mcmodpackmanager-lite",
+          "name": "quadrant_lite",
           "kind": "bin"
         }
       },
@@ -25,16 +21,16 @@
     {
       "type": "lldb",
       "request": "launch",
-      "name": "Debug unit tests in executable 'mcmodpackmanager-lite'",
+      "name": "Debug unit tests in executable 'quadrant_lite'",
       "cargo": {
         "args": [
           "test",
           "--no-run",
-          "--bin=mcmodpackmanager-lite",
-          "--package=mcmodpackmanager-lite"
+          "--bin=quadrant_lite",
+          "--package=quadrant_lite"
         ],
         "filter": {
-          "name": "mcmodpackmanager-lite",
+          "name": "quadrant_lite",
           "kind": "bin"
         }
       },

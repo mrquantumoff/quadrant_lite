@@ -3,7 +3,7 @@ authors = ["MrQuantumOFF (Demir Yerli) <mrquantumoff@protonmail.com>"]
 build = "build.rs"
 description = "An alternative to the normal Minecraft Modpack Manager, but without things, that some people may not like."
 edition = "2021"
-name = "mcmodpackmanager_lite"
+name = "quadrant_lite"
 version = "0.1.0"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html

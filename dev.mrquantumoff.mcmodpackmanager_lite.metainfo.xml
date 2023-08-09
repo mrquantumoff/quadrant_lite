@@ -3,14 +3,14 @@
     <id>dev.mrquantumoff.mcmodpackmanager_lite</id>
     <metadata_license>MIT</metadata_license>
     <project_license>GPL-3.0-only</project_license>
-    <name>Minecraft Modpack Manager</name>
+    <name>Quadrant Lite</name>
     <summary>Manage your modpacks with ease!</summary>
     <description>
         <p>
             Change your modpack by clicking just a few buttons!
         </p>
         <p>
-            An alternative to the normal Minecraft Modpack Manager, but without things, that some people may not like.
+            An alternative to the normal Quadrant Lite, but without things, that some people may not like.
         </p>
         <p>
       This app lets you install and manage minecraft modpacks using a GUI written in Rust.
@@ -40,7 +40,7 @@
     </keywords>
     <releases>
 
-        <release date="2023-06-01" version="0.1.0">
+        <release date="2023-08-09" version="1.0.0">
             <description>
                 <p>The initial release</p>
             </description>
@@ -69,5 +69,5 @@
       minecraft-modpack-manager</binary>
     </provides>
     <content_rating type="oars-1.1" />
-    <launchable type="desktop-id">dev.mrquantumoff.mcmodpackmanager_lite.desktop</launchable>
+    <launchable type="desktop-id">dev.mrquantumoff.quadrant_lite.desktop</launchable>
 </component>
