@@ -38,7 +38,7 @@ jobs:
           generate_release_notes: true
           prerelease: contains('preview', ${{ github.ref_name}})
           token: ${{ secrets.GITHUB_TOKEN }}
-          files: target/release/mcmodpackmanager_lite
+          files: target/release/quadrant_lite
       - name: Publish windows
         if: matrix.platform == 'windows-latest'
         uses: softprops/action-gh-release@v1
@@ -46,4 +46,4 @@ jobs:
           generate_release_notes: true
           prerelease: contains('preview', ${{ github.ref_name}})
           token: ${{ secrets.GITHUB_TOKEN }}
-          files: MCModpackManagerLiteSetup.exe
+          files: QuadrantLiteSetup.exe
