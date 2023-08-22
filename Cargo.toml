@@ -4,20 +4,27 @@ build = "build.rs"
 description = "An alternative to the normal Minecraft Modpack Manager, but without things, that some people may not like."
 edition = "2021"
 name = "quadrant_lite"
-version = "0.1.0"
+version = "1.1.0"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-directories = "5.0.1"
-open = "5.0.0"
-slint = {version = "1.1", features = ["backend-winit", "backend-qt", "renderer-winit-software", "renderer-winit-femtovg", "std", "compat-1-0"], default-features = false}
-tokio = {version = "1", features = ["full"]}
+directories = "~5.0.1"
+open = "~5.0.0"
+slint = { version = "~1.1.1", features = [
+    "backend-winit",
+    "backend-qt",
+    "renderer-winit-software",
+    "renderer-winit-femtovg",
+    "std",
+    "compat-1-0",
+], default-features = false }
+tokio = { version = "~1.32.0", features = ["full"] }
 
 [target.'cfg(windows)'.dependencies]
-winapi = {version = "0", features = ["wincon"]}
+winapi = { version = "~0.3.9", features = ["wincon"] }
 
 [build-dependencies]
-slint-build = "1.1"
+slint-build = "~1.1.1"
 [target.'cfg(windows)'.build-dependencies]
-winres = "0.1"
+winres = "~0.1.12"
