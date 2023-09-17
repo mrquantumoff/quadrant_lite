@@ -1,7 +1,7 @@
 [package]
 authors = ["MrQuantumOFF (Demir Yerli) <mrquantumoff@protonmail.com>"]
 build = "build.rs"
-description = "An alternative to the normal Minecraft Modpack Manager, but without things, that some people may not like."
+description = "An alternative to the normal Quadrant, but without things, that some people may not like."
 edition = "2021"
 name = "quadrant_lite"
 version = "23.9.0"
