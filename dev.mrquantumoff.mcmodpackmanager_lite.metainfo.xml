@@ -40,6 +40,12 @@
     </keywords>
     <releases>
 
+        <release date="2023-09-30" version="23.10.0">
+            <description>
+                <p>Dependency Updates.</p>
+            </description>
+        </release>
+
         <release date="2023-09-17" version="23.09.0">
             <description>
                 <p>Dependency Updates. Switch to standard Quadrant's versioning system.</p>

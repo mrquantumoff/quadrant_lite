@@ -4,14 +4,14 @@ build = "build.rs"
 description = "An alternative to the normal Quadrant, but without things, that some people may not like."
 edition = "2021"
 name = "quadrant_lite"
-version = "23.9.0"
+version = "23.10.0"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 directories = "~5.0.1"
 open = "~5.0.0"
-slint = { version = "~1.2.0", features = [
+slint = { version = "~1.2.1", features = [
     "backend-winit",
     "backend-qt",
     "renderer-winit-software",
@@ -25,6 +25,6 @@ tokio = { version = "~1.32.0", features = ["full"] }
 winapi = { version = "~0.3.9", features = ["wincon"] }
 
 [build-dependencies]
-slint-build = "~1.2.0"
+slint-build = "~1.2.1"
 [target.'cfg(windows)'.build-dependencies]
 winres = "~0.1.12"
