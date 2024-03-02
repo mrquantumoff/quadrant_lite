@@ -25,7 +25,7 @@ jobs:
           nsis-version: 3.09
       - name: Install Qt5
         if: matrix.platform == 'ubuntu-latest'
-        run: sudo apt update && sudo apt install qtbase5-dev libqt5opengl5-dev
+        run: sudo apt update && sudo apt install qt6-base-dev
       - name: Build the app
         run: cargo build --release --verbose
       - name: Build the installer (windows)

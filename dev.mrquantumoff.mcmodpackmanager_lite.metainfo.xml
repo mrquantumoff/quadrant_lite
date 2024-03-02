@@ -40,6 +40,12 @@
     </keywords>
     <releases>
 
+        <release date="2024-03-02" version="24.3.0">
+            <description>
+                <p>Dependency Updates.</p>
+            </description>
+        </release>
+
         <release date="2024-01-14" version="24.1.0">
             <description>
                 <p>Dependency Updates.</p>
