@@ -8,9 +8,10 @@
 
 - CurseForge/Modrinth downloads
 - The optional data collection, that exists in the normal Quadrant
-- Importing/Exporting modpacks
+- Sharing modpacks
 - News related to Quadrant when you start the app
 - Multiple locales
+- Backing up modpacks
 
 ## This app features
 
